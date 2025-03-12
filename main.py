@@ -4,7 +4,7 @@ nombreUsuario=None
 
 #Declarando las variables
 productos=[]
-producto={}
+contador=0
 
 #crear un menu de opciones
 print("*** MerqueoAPP ***")
@@ -18,12 +18,12 @@ opcion=100
 while opcion != 5:
     opcion=int(input("Digita una opcion del menu: "))
 
-    if opcion == 1:
-        print("Creando la lista")
-        #Poblando listas y diccionarios en python 
+    if opcion == 1:        #Poblando listas y diccionarios en python 
 
         #Asignando claves a un diccionario
-        producto["id"]=5
+        producto={}
+        contador=contador+1
+        producto["id"]=contador
         producto["nombre"]=input("Digita el nombre del producto: ")
         producto["presentacion"]=input(" Digita la presentacion del producto: ")
         producto["cantidad"]=int(input("Digita la cantidad: "))
@@ -31,13 +31,29 @@ while opcion != 5:
 
         #Asignando a una lista un diccionario
         productos.append(producto)
-        print(productos)
 
 
     elif opcion == 2:
-        print("Mostrando la lista")
+
+        #Recorriendo una lista de diccionarios
+        for productoiterador in productos:
+            print(f"id Producto:{productoiterador['id']}")
+            print(f"Nombre Producto:{productoiterador['nombre']}")
+            print(f"Nombre Precio:{productoiterador['precio']}")
+
     elif opcion == 3:
-        print("Modificando la lista")
+        #preguntar al usuario que producto desea modificar
+        idProductoAbuscar=int(input("Digita el id del producto a modificar: "))
+         #recorrer la lista de productos
+        for productoBuscado in productos:
+            if idProductoAbuscar == productoBuscado["id"]:
+                print("Producto encontrado")
+                break
+            else:
+                print("Producto no encontrado")
+        #modificar la o las propiedades del producto
+
+            
     elif opcion == 4:
         print("Retirando un producto")
     else:
